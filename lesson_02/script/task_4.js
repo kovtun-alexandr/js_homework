@@ -2,7 +2,7 @@
 
 const answerСentimeters = parseInt(prompt('Вкажіть довжину у см.', '0'))
 const meters = answerСentimeters / 100
-const kilometers = answerСentimeters / 1000
+const kilometers = answerСentimeters / 100000
 
 document.write(`
     <ul>
