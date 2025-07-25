@@ -1,7 +1,7 @@
 'use strict'
 
-const answerOne = parseInt(prompt('Введіть значення a', '0'))
-const answertwo = parseInt(prompt('Введіть значення b', '0'))
+const answerOne = parseInt(prompt('Введіть значення a', '25'))
+const answertwo = parseInt(prompt('Введіть значення b', '3'))
 
 const sum = answerOne + answertwo
 const product = answerOne * answertwo

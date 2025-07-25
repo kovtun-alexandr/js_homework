@@ -1,8 +1,8 @@
 'use strict'
 
-const answerOne = parseInt(prompt('Введіть значення a:', '0'))
-const answerTwo = parseInt(prompt('Введіть значення b:', '0'))
-const answerThree = parseInt(prompt('Введіть значення c:', '0'))
+const answerOne = parseInt(prompt('Введіть значення a:', '18'))
+const answerTwo = parseInt(prompt('Введіть значення b:', '5'))
+const answerThree = parseInt(prompt('Введіть значення c:', '22'))
 
 // task 1:
 const sumOne = answerOne + 12 + answerTwo

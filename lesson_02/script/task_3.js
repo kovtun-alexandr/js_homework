@@ -1,6 +1,6 @@
 'use strict'
 
-const answerCountCoffe = parseInt(prompt('У нас у продажу \'Кава в зернах TOTTI Caffe Espresso 1 кг\' вкажіть кількість кілограм:', '0'))
+const answerCountCoffe = parseInt(prompt('У нас у продажу \'Кава в зернах TOTTI Caffe Espresso 1 кг\' вкажіть кількість кілограм:', '4'))
 const coffeProduct = 795
 const orderAmount = coffeProduct * answerCountCoffe
 const percent = 5

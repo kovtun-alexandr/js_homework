@@ -1,6 +1,6 @@
 'use strict'
 
-const answerСentimeters = parseInt(prompt('Вкажіть довжину у см.', '0'))
+const answerСentimeters = parseInt(prompt('Вкажіть довжину у см.', '350'))
 const meters = answerСentimeters / 100
 const kilometers = answerСentimeters / 100000
 
