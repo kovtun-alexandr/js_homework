@@ -15,15 +15,15 @@ document.write(`
     </tr>
     <tr>
       <td>Сума</td>
-      <td>${numberOne} + ${numbertwo} = ${sum}</td>
+      <td>${numberOne} + ${numberTwo} = ${sum}</td>
     </tr>
     <tr>
       <td>Добуток</td>
-      <td>${numberOne} * ${numbertwo} = ${product}</td>
+      <td>${numberOne} * ${numberTwo} = ${product}</td>
     </tr>
     <tr>
       <td>Частка</td>
-      <td>${numberOne} % ${numbertwo} = ${fraction}</td>
+      <td>${numberOne} % ${numberTwo} = ${fraction}</td>
     </tr>
   </table>    
 `)
