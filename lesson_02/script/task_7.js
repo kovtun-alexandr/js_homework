@@ -1,7 +1,7 @@
 'use strict'
 
 const randomMonth = Math.floor(Math.random() * 12) + 1
-const randomDay = Math.floor(Math.random() * 6)
+const randomDay = Math.floor(Math.random() * 7)
 const sumMonthAndDay = randomMonth + randomDay
 
 document.write(`

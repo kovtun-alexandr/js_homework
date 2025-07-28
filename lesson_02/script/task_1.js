@@ -1,11 +1,11 @@
 'use strict'
 
-const answerOne = parseInt(prompt('Введіть значення a', '25'))
-const answertwo = parseInt(prompt('Введіть значення b', '3'))
+const numberOne = parseInt(prompt('Введіть значення a', '25'))
+const numbertwo = parseInt(prompt('Введіть значення b', '3'))
 
-const sum = answerOne + answertwo
-const product = answerOne * answertwo
-const fraction = answerOne % answertwo
+const sum = numberOne + numbertwo
+const product = numberOne * numbertwo
+const fraction = numberOne / numbertwo
 
 document.write(`
   <table>
@@ -15,15 +15,15 @@ document.write(`
     </tr>
     <tr>
       <td>Сума</td>
-      <td>${answerOne} + ${answertwo} = ${sum}</td>
+      <td>${numberOne} + ${numbertwo} = ${sum}</td>
     </tr>
     <tr>
       <td>Добуток</td>
-      <td>${answerOne} * ${answertwo} = ${product}</td>
+      <td>${numberOne} * ${numbertwo} = ${product}</td>
     </tr>
     <tr>
       <td>Частка</td>
-      <td>${answerOne} % ${answertwo} = ${fraction}</td>
+      <td>${numberOne} % ${numbertwo} = ${fraction}</td>
     </tr>
   </table>    
 `)
