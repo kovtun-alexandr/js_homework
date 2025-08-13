@@ -183,6 +183,14 @@ body {
     margin-bottom: 0.625rem;
 }
 
+.item__body ol {
+    margin-left: 1.5rem;
+}
+
+.item__body li {
+    list-style: auto;
+}
+
 .item__label {
     display: flex;
     justify-content: center;
