@@ -159,6 +159,35 @@ body {
     margin-bottom: 1rem;
 }
 
+.item__body ol,
+.item__body ul,
+.homework__body ol,
+.homework__body ul {
+    margin-left: 1.5rem;
+}
+
+.item__body ol > li,
+.homework__body ol > li {
+    list-style: auto;
+}
+
+.item__body ul > li,
+.homework__body ul > li {
+    list-style: disc;
+}
+
+.homework__title {
+    font-size: 1.5rem;
+}
+
+.homework__condition {
+    margin-bottom: 1rem;
+}
+
+.homework__answer > *:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
 .item {
     padding: 1rem;
     border: 1px solid #4c4c4c70;
@@ -181,14 +210,6 @@ body {
 
 .item__body > *:not(:last-child) {
     margin-bottom: 0.625rem;
-}
-
-.item__body ol {
-    margin-left: 1.5rem;
-}
-
-.item__body li {
-    list-style: auto;
 }
 
 .item__label {
@@ -264,6 +285,11 @@ table, td {
 table {
     max-width: 100px;
     background: #fff;
+}
+
+hr {
+    margin-block: 1rem;
+    border: .5px solid #4c4c4c61;
 }
 
 .footer {
