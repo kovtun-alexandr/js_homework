@@ -5,10 +5,12 @@
 
 if (confirm('Почати тестування?')) {
     function getCreatingArray(num) {
-        const newArr = new Array(num).fill(1, 0, num / 2).fill(7, num / 2)
+        const countElement = Math.floor(num / 2)
+        const newArr = new Array(num).fill(1, 0, countElement).fill(7, countElement)
 
         return newArr
     }
+
     function getPrintMessages(arr) {
         document.write(`<div>Створений вами массив \[${arr}\]</div>`)
     }

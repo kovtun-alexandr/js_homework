@@ -20,10 +20,10 @@ if (confirm('Почати тестування?')) {
     const carNumbers = getCreateCarNumbers(numberCarNumbers)
 
     function getSortingCarNumbers(arr) {
-        const sortingNumbers = new Array()
+        const sortingNumbers = []
 
         arr.forEach(element => {
-            if (element.charAt(0) === 'А') sortingNumbers.push(element)
+            if (element.charAt(0) === 'А') sortingNumbers.push(element) // або element[0]
         });
 
         return sortingNumbers

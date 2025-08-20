@@ -18,10 +18,10 @@ if (confirm('Почати тестування?')) {
     const creatingArr = getCreatingArray(elementsNumbers)
 
     function getAmount(arr) {
-        let sumNumber = 0
+        let sumNumber = 1
 
         for (const element of arr) {
-            if (element > 0) sumNumber += element
+            if (element > 0) sumNumber *= element
         }
 
         return sumNumber
