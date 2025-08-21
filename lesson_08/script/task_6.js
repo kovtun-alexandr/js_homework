@@ -5,16 +5,16 @@
 // Приклад збереження даних:
 
 if (confirm('Почати тестування?')) {
-    function getRandomePrices(arr) {
-        const newArr = []
+    function getRandomePrices(titleArr) {
+        const newPriceArr = []
         const min = 10
         const max = 1000
 
-        for (let i = 0; i < arr.length; i++) {
-            newArr.push(Math.floor(Math.random() * max) + min);
+        for (let i = 0; i < titleArr.length; i++) {
+            newPriceArr.push(Math.floor(Math.random() * max) + min);
         }
 
-        return newArr
+        return newPriceArr
     }
 
     const productTitles = [
@@ -28,27 +28,27 @@ if (confirm('Почати тестування?')) {
 
     const clientMoney = parseFloat(prompt('Скільки коштів у вас є, які ви готові витратити:', '100'))
 
-    function getSortProduct(arr1, arr2, price) {
-        const newArr = []
+    function getSortProduct(priceArr, titleArr, price) {
+        const newProducrArr = []
 
-        for (let i = 0; i < arr1.length; i++) {
-            if (price >= arr1[i]) {
-                newArr.push(`${arr2[i]} - ціна: ${arr1[i]}`)
+        for (let i = 0; i < priceArr.length; i++) {
+            if (price >= priceArr[i]) {
+                newProducrArr.push(`${titleArr[i]} - ціна: ${priceArr[i]}`)
             }
         }
 
-        if (newArr.length == 0) {
-            newArr.push(`Нажаль ваших коштів ${price} не вистачає! Щоб щось придбати.`)
+        if (newProducrArr.length == 0) {
+            newProducrArr.push(`Нажаль ваших коштів ${price} не вистачає! Щоб щось придбати.`)
         }
 
-        return newArr
+        return newProducrArr
     }
 
-    function getPrintMessages(arr) {
+    function getPrintMessages(productArr) {
         let str = ''
 
-        for (let i = 0; i < arr.length; i++) {
-            str += `<li>${arr[i]}</li>`
+        for (let i = 0; i < productArr.length; i++) {
+            str += `<li>${productArr[i]}</li>`
         }
 
         document.write(`

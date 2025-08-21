@@ -20,27 +20,50 @@ if (confirm('Почати тестування?')) {
 
     const sudentGrades = getRandomGrades(15)
 
-    function getSortingGrades(arr) {
+    function getGoodGrades(gredesArr) {
         let goodCount = 0
-        let belowAverageCount = 0
-        let deuceCount = 0
 
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i] === 6) continue
-            if (arr[i] > 6) goodCount++
-            else if (arr[i] > 3) belowAverageCount++
-            else deuceCount++
+        for (let i = 0; i < gredesArr.length; i++) {
+            if (gredesArr[i] > 6) goodCount++
         }
 
-        return [goodCount, belowAverageCount, deuceCount]
+        return goodCount
     }
 
-    function getPrintMessages(arr) {
+    function getLessAverageGrades(gredesArr) {
+        let lessAverageCount = 0
+
+        for (let i = 0; i < gredesArr.length; i++) {
+            if (gredesArr[i] < 6) lessAverageCount++
+        }
+
+        return lessAverageCount
+    }
+
+    function getDeuceGrades(gredesArr) {
+        let deuceCount = 0
+
+        for (let i = 0; i < gredesArr.length; i++) {
+            if (gredesArr[i] < 4) deuceCount++
+        }
+
+        return deuceCount
+    }
+
+    function getSortingGrades(gredesArr) {
+        const good = getGoodGrades(gredesArr)
+        const lessAverage = getLessAverageGrades(gredesArr)
+        const duece = getDeuceGrades(gredesArr)
+
+        return [good, lessAverage, duece]
+    }
+
+    function getPrintMessages(sortGredesArr) {
         document.write(`
             <ul>
-                <li>двійок - ${arr[2]}</li>
-                <li>хороших оцінок - ${arr[0]}</li>
-                <li>нижче середнього - ${arr[1]}</li>
+                <li>двійок - ${sortGredesArr[2]}</li>
+                <li>хороших оцінок - ${sortGredesArr[0]}</li>
+                <li>нижче середнього - ${sortGredesArr[1]}</li>
             </ul>    
         `)
     }

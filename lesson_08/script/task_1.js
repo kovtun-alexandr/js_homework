@@ -16,13 +16,18 @@ if (confirm('Почати тестування?')) {
         return sum.toFixed(1)
     }
 
-    function getCategoryGrades(arr) {
-        let min = arr[0]
+    function getMinimumValue(arr) {
+        let minValue = arr[0]
 
         for (let i = 1; i < arr.length; i++) {
-            if (arr[i] < min) min = arr[i]
+            if (arr[i] < minValue) minValue = arr[i]
         }
-        switch (min) {
+
+        return minValue
+    }
+
+    function getCategoryGrades(num) {
+        switch (num) {
             case 12:
             case 11:
             case 10:
@@ -67,11 +72,11 @@ if (confirm('Почати тестування?')) {
         <hr>
     `)
 
-    getPrintMessages('Alex', getAverageScore(alex), getCategoryGrades(alex))
-    getPrintMessages('Ivan', getAverageScore(ivan), getCategoryGrades(ivan))
-    getPrintMessages('Maxim', getAverageScore(maxim), getCategoryGrades(maxim))
-    getPrintMessages('Olena', getAverageScore(olena), getCategoryGrades(olena))
-    getPrintMessages('Matia', getAverageScore(maria), getCategoryGrades(maria))
+    getPrintMessages('Alex', getAverageScore(alex), getCategoryGrades(getMinimumValue(alex)))
+    getPrintMessages('Ivan', getAverageScore(ivan), getCategoryGrades(getMinimumValue(ivan)))
+    getPrintMessages('Maxim', getAverageScore(maxim), getCategoryGrades(getMinimumValue(maxim)))
+    getPrintMessages('Olena', getAverageScore(olena), getCategoryGrades(getMinimumValue(olena)))
+    getPrintMessages('Matia', getAverageScore(maria), getCategoryGrades(getMinimumValue(maria)))
 } else {
     alert(`Нажаль ви відмовились від теста 😞`)
 }

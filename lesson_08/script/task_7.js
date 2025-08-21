@@ -7,70 +7,90 @@
 // поки не будуть потоплені усі кораблі.
 
 if (confirm('Почати тестування?')) {
+    function getCreateBattlefield() {
+        const numberCells = parseInt(prompt('Введіть кількість клітинок для поля', '10'))
+        const battlefieldArr = []
 
-    const numberCells = parseInt(prompt('Введіть кількість клітинок для поля', '10'))
+        for (let i = 0; i < numberCells; i++) {
+            battlefieldArr.push('0')
+        }
 
-    const getShips = (num) => Math.floor(Math.random() * (num / 2)) + 1
+        return battlefieldArr
+    }
+
+    const battlefield = getCreateBattlefield()
+    const getShipsNumber = (arr) => Math.floor(Math.random() * (arr.length / 2)) + 1
 
     function getRandomShips(num) {
         const min = 1
         const max = num
-        const newArr = []
+        const shipsArr = []
 
         for (let i = 0; i < max; i++) {
             const ship = Math.floor(Math.random() * max) + min
-            newArr.push(ship)
+            shipsArr.push(ship)
         }
-        newArr.sort((a, b) => a - b)
 
-        return newArr
+        return shipsArr
     }
 
-    function getAddShipsBattleGround(num, arr) {
-        const newArr = []
-        loop: for (let i = 0; i < num; i++) {
-            for (let j = 0; j < arr.length; j++) {
-                if (arr[j] === i) {
-                    newArr.push('1');
+    function getShipsSort(shipsArr) {
+        shipsArr.sort((a, b) => a - b)
+
+        return shipsArr
+    }
+
+    function getUniqueShips(shipsArr) {
+        const uniqueShipsArr = shipsArr.filter((ship, index, baseArr) => baseArr.indexOf(ship) === index)
+
+        return uniqueShipsArr
+    }
+
+    function getShips(num) {
+        const randomShips = getRandomShips(num)
+        const shipsSort = getShipsSort(randomShips)
+        const uniqueShips = getUniqueShips(shipsSort)
+
+        return uniqueShips
+    }
+
+    function getAddShipsBattleGround(battlefieldArr, shipsArr) {
+        loop: for (let i = 0; i < battlefieldArr.length; i++) {
+            for (let j = 0; j < shipsArr.length; j++) {
+                if (shipsArr[j] === i) {
+                    battlefieldArr[i] = '1';
                     continue loop
                 }
             }
-            newArr.push('0')
         }
 
-        return newArr
+        return battlefieldArr
     }
 
-
-
-    function getFight(arr) {
-        let count = 0
+    function getFight(battleArr, shipsArr) {
+        let count = shipsArr.length
         let shotCount = 0
-
-        for (let j = 0; j < arr.length; j++) {
-            if (arr[j] === '1') count++
-        }
 
         while (count !== 0) {
             alert(`У вас ${count} кораблів`)
-            const shot = parseInt(prompt(`Зробіть постріл, максимальна кількість клітин ${arr.length} Кораблів ${count}. Для вихода введіть -1`))
+            const shot = parseInt(prompt(`Зробіть постріл, максимальна кількість клітин ${battleArr.length} Кораблів ${count}. Для вихода введіть -1`))
             shotCount++
-            for (let i = 0; i < arr.length; i++) {
+            for (let i = 0; i < battleArr.length; i++) {
                 if (shot === -1) return arr
-                if (shot === i && arr[i] === '1') {
-                    arr[i] = 'X'
+                if (shot === i && battleArr[i] === '1') {
+                    battleArr[i] = 'X'
                     count--
                     alert(`Ви підбили корабель! Лишилось ${count} кораблів`)
                 }
-                if (shot === i && arr[i] === '0') {
-                    arr[i] = '*'
+                if (shot === i && battleArr[i] === '0') {
+                    battleArr[i] = '*'
                     alert(`Ви не влучили! Лишилось ${count} кораблів`)
                 }
             }
         }
         alert('Вітаю ви перемогли!')
 
-        return [arr, shotCount]
+        return [battleArr, shotCount]
     }
 
     function getPrintMessages(arr) {
@@ -92,9 +112,10 @@ if (confirm('Почати тестування?')) {
         <hr>
     `)
 
-    const battleGround = getAddShipsBattleGround(numberCells, getRandomShips(getShips(numberCells)))
+    const ships = getShips(getShipsNumber(battlefield))
+    const battleGround = getAddShipsBattleGround(battlefield, ships)
 
-    getPrintMessages(getFight(battleGround))
+    getPrintMessages(getFight(battleGround, ships))
 } else {
     alert(`Нажаль ви відмовились від теста 😞`)
 }
