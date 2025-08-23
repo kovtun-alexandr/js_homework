@@ -45,14 +45,14 @@ if (confirm('Почати тестування?')) {
 
     // 3) !!!Самостійно не зробив жoдного рішеня, лише за допомогою ШІ 😞
     function getLargerValuesPrevious(prices) {
-        // const newPrices = prices.filter((price, index) => index > 0 && price > prices[index - 1])
+        const newPrices = prices.filter((price, index, baseArr) => index > 0 && price > baseArr[index - 1])
 
-        const newPrices = prices.reduce((prevPrice, price, index, baseArr) => {
-            if (index > 0 && price > baseArr[index - 1]) {
-                prevPrice.push(price);
-            }
-            return prevPrice;
-        }, []);
+        // const newPrices = prices.reduce((prevPrice, price, index, baseArr) => {
+        //     if (index > 0 && price > baseArr[index - 1]) {
+        //         prevPrice.push(price);
+        //     }
+        //     return prevPrice;
+        // }, []);
 
         return newPrices
     }
@@ -60,16 +60,17 @@ if (confirm('Почати тестування?')) {
     // 4) Тут також трішки запитав у ШІ, не зовсім розумів логіку виконання завдання
     function getValuePricePercentMaximum(prices) {
         const maxPrice = Math.max(...prices);
-        const pricePercent = prices.map((price) => ((price / maxPrice) * 100).toFixed(2))
+        const pricePercent = prices.map((price) => (price / maxPrice) * 100)
 
         return pricePercent
     }
 
     // 5)
     function getChangesPriceNumber(prices) {
-        const changesPrice = prices.reduce((prevPrice, price) => (prevPrice !== price ? prevPrice + 1 : price), 0)
+        let countChangePrice = 0
+        const changesPrice = prices.reduce((prevPrice, price) => (prevPrice !== price ? countChangePrice++ : price), 0)
 
-        return changesPrice
+        return countChangePrice
     }
 
     // 6)
