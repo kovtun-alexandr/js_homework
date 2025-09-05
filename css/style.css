@@ -184,6 +184,10 @@ body {
     margin-bottom: 1rem;
 }
 
+.homework__condition > *:not(:last-child) {
+    margin-bottom: .625rem;
+}
+
 .homework__answer > *:not(:last-child) {
     margin-bottom: 1rem;
 }
