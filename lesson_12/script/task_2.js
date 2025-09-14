@@ -53,33 +53,67 @@ if (confirm('Почати тестування?')) {
      * @returns the index of the specified name if it is present, otherwise returns -1
      */
     const getSearchNameIndex = (names, name) => {
-        let nameIndex = -1;
-        for (let i = 0; i < names.length; i++) {
-            if (names[i].toLocaleLowerCase() === name.toLocaleLowerCase()) {
-                nameIndex = i;
-                break;
+        let left = 0;
+        let right = names.length - 1;
+        const searchName = name.toLocaleLowerCase();
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            const midName = names[mid].toLocaleLowerCase();
+            if (midName === searchName) {
+                return mid;
+            }
+            else if (midName < searchName) {
+                left = mid + 1;
+            }
+            else {
+                right = mid - 1;
             }
         }
-        return nameIndex;
+        return -1;
     };
     // 2)
+    /**
+     * The function sorts an array of names by word length
+     * @param names accepts an array of names
+     * @returns a sorted array of names by word length
+     */
+    const sortByLength = (names) => {
+        return names.sort((a, b) => a.length - b.length);
+    };
     /**
      * The function searches for a name by length
      * @param arr accepts an array of names
      * @param num pass the number of characters
      * @returns an array with name and index arrays with the specified length of letters
      */
-    const getLookingShorterName = (arr, num) => {
-        const newArr = [];
-        for (let i = 0; i < sortNames.length; i++) {
-            if (sortNames[i].length === num) {
-                const coincidence = [];
-                coincidence[0] = sortNames[i];
-                coincidence[1] = i;
-                newArr.push(coincidence);
+    const getLookingShorterName = (sortNames, num) => {
+        const result = [];
+        let left = 0;
+        let right = sortNames.length - 1;
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            const midLen = sortNames[mid].length;
+            if (midLen === num) {
+                let i = mid;
+                while (i >= 0 && sortNames[i].length === num) {
+                    result.unshift([sortNames[i], i]);
+                    i--;
+                }
+                i = mid + 1;
+                while (i < sortNames.length && sortNames[i].length === num) {
+                    result.push([sortNames[i], i]);
+                    i++;
+                }
+                return result;
+            }
+            else if (midLen < num) {
+                left = mid + 1;
+            }
+            else {
+                right = mid - 1;
             }
         }
-        return newArr;
+        return result;
     };
     /**
      * Displays the results of a two-dimensional array on the screen.
@@ -110,7 +144,7 @@ if (confirm('Почати тестування?')) {
     `);
     const sortNames = [...getSortArr(names)];
     document.write(`
-        <div>Відсортований масив імен: </br> \[${sortNames}\]</div>
+        <div>Відсортований масив імен за алфавітом: </br> \[${sortNames}\]</div>
     `);
     const searchName = prompt('Яке імя ви хочете знайти?', 'Olga');
     const taskFirst = `1) У масиві ім’я \"${searchName}\"`;
@@ -131,7 +165,12 @@ if (confirm('Почати тестування?')) {
     else {
         document.write('1) Ви не вказали імя!');
     }
-    getPrintMessages(taskSecond, getLookingShorterName(sortNames, 5));
+    const sortLehgs = [...sortByLength(names)];
+    document.write(`
+        <div></div>
+        <div>Відсортований масив імен за довжиною: </br> \[${sortLehgs}\]</div>
+    `);
+    getPrintMessages(taskSecond, getLookingShorterName(sortLehgs, 5));
 }
 else {
     alert(`Нажаль ви відмовились від теста 😞`);
