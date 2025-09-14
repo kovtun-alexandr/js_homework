@@ -268,7 +268,7 @@ if (confirm('Почати тестування?')) {
     /**
      * the function sorts the array by the price of the cost of creating a website
      * @param arr with a list of sites
-     * @returns an array with two sorted arrays sorted by price greater than 100000 and less than 100000
+     * @returns two sorted arrays, sorted by price greater than 100,000 and less than 100,000
      */
     function getSortingByCost(arr) {
         const sortLess = arr.filter((site) => site.cost < 100000);
