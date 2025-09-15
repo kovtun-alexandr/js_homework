@@ -32,7 +32,7 @@ if (confirm('Почати тестування?')) {
     const randomMatrix = getGeneratedMatrix(numberArrays, numberRows, numberElements, 10, 100)
 
     // 1)
-    function getSortingRowsFirstColumnsHalf(matrix) {
+    function getSortingRowsColumns(matrix) {
         const matrixRowsCount = matrix[0].length / 2
         const matrixElementsCount = matrix[0][0].length / 2
         let sortMatrix = []
@@ -55,7 +55,7 @@ if (confirm('Почати тестування?')) {
     }
 
     // 2)
-    function getSortingRowsFirstColumnsSecondHalf(matrix) {
+    function getSortingRowsColumnsHalf(matrix) {
         const matrixRowsCount = matrix[0].length / 2
         const matrixElementsCount = matrix[0][0].length / 2
         let sortMatrix = []
@@ -78,7 +78,7 @@ if (confirm('Почати тестування?')) {
     }
 
     // 3)
-    function getSortingRowsMiddleColumnsHalf(matrix) {
+    function getSortingColumns(matrix) {
         const matrixRowsCount = matrix[0].length / 2
         const matrixElementsCount = matrix[0][0].length / 2
         let sortMatrix = []
@@ -101,7 +101,7 @@ if (confirm('Почати тестування?')) {
     }
 
     // 4)
-    function getSortingRowsMiddleColumnsSecondHalf(matrix) {
+    function getSortingColumnsHalf(matrix) {
         const matrixRowsCount = matrix[0].length / 2
         const matrixElementsCount = matrix[0][0].length / 2
         let sortMatrix = []
@@ -205,10 +205,10 @@ if (confirm('Почати тестування?')) {
     const taskSixth = '6) Суму непарних стовпців'
     const taskSeventh = '7) У парних рядках – непарні стовпці, у непарних – парні.'
 
-    getPrintMessages(taskFirst, getSortingRowsFirstColumnsHalf(randomMatrix))
-    getPrintMessages(taskSecond, getSortingRowsFirstColumnsSecondHalf(randomMatrix))
-    getPrintMessages(taskThird, getSortingRowsMiddleColumnsHalf(randomMatrix))
-    getPrintMessages(taskFourth, getSortingRowsMiddleColumnsSecondHalf(randomMatrix))
+    getPrintMessages(taskFirst, getSortingRowsColumns(randomMatrix))
+    getPrintMessages(taskSecond, getSortingRowsColumnsHalf(randomMatrix))
+    getPrintMessages(taskThird, getSortingColumns(randomMatrix))
+    getPrintMessages(taskFourth, getSortingColumnsHalf(randomMatrix))
     getPrintMessages(taskFifth, getSumEvenRows(randomMatrix))
     getPrintMessages(taskSixth, getSumOddColumns(randomMatrix))
     getPrintMessages(taskSeventh, getChessSum(randomMatrix))

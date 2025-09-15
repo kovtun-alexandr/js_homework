@@ -145,10 +145,7 @@ if (confirm('Почати тестування?')) {
         const profitWednesday = []
 
         for (let indexStore = 0; indexStore < stores.length; indexStore++) {
-            for (let indexDey = 0; indexDey < 7; indexDey++) {
-                if (indexDey === 2) profitWednesday.push(stores[indexStore][indexDey])
-
-            }
+            profitWednesday.push(stores[indexStore][2])
         }
 
         const maxWednesday = Math.max(...profitWednesday)
@@ -177,9 +174,11 @@ if (confirm('Почати тестування?')) {
 
     // 8)
     function getSortWeekDescending(stores) {
-        const sortWeeks = stores.filter((store) => getSortMaxMin(store))
+        stores.forEach(store => store.push(Math.max(...store)))
+        stores.sort((store1, store2) => store2.at(-1) - store1.at(-1))
+        stores.forEach(store => store.pop())
 
-        return sortWeeks
+        return stores
     }
 
     const secondCopyProfitShop = JSON.parse(JSON.stringify(profitShops))
@@ -187,9 +186,11 @@ if (confirm('Почати тестування?')) {
 
     // 9)
     function getSortWeeksDescendingAmount(stores) {
-        const amountWeeksDescensing = stores.map((store) => store.reduce((prevWeek, week) => prevWeek + week))
+        stores.forEach((store) => store.push(store.reduce((prevWeek, week) => prevWeek + week)))
+	    stores.sort((store1, store2) => store2.at(-1) - store1.at(-1))
+        stores.forEach(store => store.pop())
 
-        return getSortMaxMin(amountWeeksDescensing)
+        return stores
     }
 
     function getPrintStors(arrShops) {
@@ -224,7 +225,7 @@ if (confirm('Почати тестування?')) {
     getPrintMessages(taskSixth, getArrayValueGreater(profitShops))
     getPrintMessages(taskSeventh, getPrintStors(sortWeekAscending))
     getPrintMessages(taskEighth, getPrintStors(sortWeekDescending))
-    getPrintMessages(taskNinth, getSortWeeksDescendingAmount(sortWeekDescending))
+    getPrintMessages(taskNinth, getPrintStors(getSortWeeksDescendingAmount(sortWeekDescending)))
 } else {
     alert(`Нажаль ви відмовились від теста 😞`)
 }
