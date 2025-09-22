@@ -25,7 +25,10 @@ if (confirm('Почати тестування?')) {
          * set Day
          */
         public set Day(v:number) {
-            this._day = v
+            if(v >= 1 && v <= 31)
+                this._day = v
+            else
+                throw new Error('Incorrect data entered');
         }
 
         /**
@@ -39,7 +42,11 @@ if (confirm('Почати тестування?')) {
          * set Month
          */
         public set Month(v:number) {
-            this._month = v
+            if (v >= 1  && v <= 12)
+                this._month = v
+            else
+                throw new Error('Incorrect data entered');
+                
         }
 
         /**
@@ -117,16 +124,23 @@ if (confirm('Почати тестування?')) {
         public toString() {
             return `${this.Day}.${this.Month}.${this.Year}`
         }
-
     }
 
     const data = new TData(23,8,1984)
 
-    document.write(`
-        <h2 class="homework__title">Рішення:</h2>
-        <div>Початкова Дата:<br> ${data.toString()}</div>
-        <hr>
-    `)
+    try {
+        document.write(`
+            <h2 class="homework__title">Рішення:</h2>
+            <div>Початкова Дата:<br> ${data.toString()}</div>
+            <hr>
+        `)
+    } catch (error:any) {
+        document.write(`
+            <h2 class="homework__title">Рішення:</h2>
+            <div>${error.message}</div>
+            <hr>
+        `)
+    }
 
     const addDay = -350
     data.AddDay = addDay

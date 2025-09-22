@@ -47,6 +47,8 @@ if (confirm('Почати тестування?')) {
         }
 
         public excludeMoney():number {
+            if (this.Money < (100 / this.Currency)) throw new Error('Not enough money!');
+            
             return this.Money = -100
         }
 
@@ -68,7 +70,16 @@ if (confirm('Почати тестування?')) {
     document.write(`<div>${money.toString()}</div>`)
     document.write(`<div>Додали: ${money.AddMoney()} грн</div>`)
     document.write(`<div>${money.toString()}</div>`)
-    document.write(`<div>Відняли: ${money.excludeMoney()} грн</div>`)
+
+    try {
+        for (let i = 0; i < 11; i++) {
+            document.write(`<div>Відняли: ${money.excludeMoney()} грн</div>`)
+            document.write(`<div>${money.toString()}</div>`)          
+        }
+    } catch (error:any) {
+        document.write(`${error.message}`)
+    }
+    
     document.write(`<div>${money.toString()}</div>`)
 } else {
     alert(`Нажаль ви відмовились від теста 😞`)
