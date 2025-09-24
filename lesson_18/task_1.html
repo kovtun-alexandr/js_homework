@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #1</title>
+    <style>
+        .calculator__row{
+            display: flex;
+            column-gap: .5rem;
+        }
+        .calculator__row:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+        .calculator__row:nth-child(3) {
+            border-bottom: 1px solid rgb(71, 71, 71);
+            padding-bottom: 1rem;
+        }
+        .calculator__btn {
+            border: 2px solid rgb(71, 71, 71);
+            border-radius: .3rem;
+            padding-block: .235rem;
+            padding-inline: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: .3s;
+            color: rgb(71, 71, 71);
+        }
+        .calculator__btn:hover {
+            background-color: aqua;
+            color: rgb(71, 71, 71);
+            border-color: aqua;
+        }
+        .calculator__input {
+            padding-block: .1rem;
+            padding-inline: .2rem;
+        }
+        .calculator__input:focus-visible{
+            outline-color: aqua;
+        }
+        .calculator__input::placeholder {
+            color: #666;
+            transition: .3s;
+        }
+        .calculator__input:focus-visible::placeholder {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #18</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #1</h2>
+                            <p>
+                                Розробити калькулятор
+                            </p>
+                        </div>
+                        <div class="homework__answer">
+                            <h2 class="homework__title">Рішення:</h2>
+                            <hr>
+                            <form class="homework__form calculator">
+                                <div class="calculator__row">
+                                    <label class="calculator__label" for="firstNumber">First number</label>
+                                    <input id="firstNumber" type="text" class="calculator__input" value="" autocomplete="off" placeholder="0">
+                                </div>
+                                <div class="calculator__row">
+                                    <label class="calculator__label" for="secontNumber">Second number</label>
+                                    <input id="secontNumber" type="text" class="calculator__input" value="" autocomplete="off" placeholder="0">
+                                </div>
+                                <div class="calculator__row">
+                                    <button class="calculator__btn" id="addition">Addition</button>
+                                    <button class="calculator__btn" id="subtraction">Subtraction</button>
+                                    <button class="calculator__btn" id="multiplication">Multiplication</button>
+                                    <button class="calculator__btn" id="division">Division</button>
+                                </div>
+                                <div class="calculator__row">
+                                    <label class="calculator__label" for="result">Result</label>
+                                    <input id="result" type="text" class="calculator__input" value="0">
+                                </div>
+                            </form>
+                            <script src="./script/task_1.js"></script>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

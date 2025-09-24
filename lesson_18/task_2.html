@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #2</title>
+    <style>
+        .average-score__row{
+            display: flex;
+            column-gap: .5rem;
+        }
+        .average-score__row:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+        .table {
+            border-top: 1px solid rgb(71, 71, 71);
+            border-bottom: 1px solid rgb(71, 71, 71);
+            padding-block: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: .2rem;
+        }
+        .average-score__btn {
+            border: 2px solid rgb(71, 71, 71);
+            border-radius: .3rem;
+            padding-block: .235rem;
+            padding-inline: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: .3s;
+            color: rgb(71, 71, 71);
+        }
+        .average-score__btn:hover {
+            background-color: aqua;
+            color: rgb(71, 71, 71);
+            border-color: aqua;
+        }
+        .average-score__input,
+        .table__input {
+            padding-block: .1rem;
+            padding-inline: .2rem;
+        }
+        .average-score__input:focus-visible,
+        .table__input:focus-visible {
+            outline-color: aqua;
+        }
+        .average-score__input::placeholder,
+        .table__input::placeholder {
+            color: #666;
+            transition: .3s;
+        }
+        .average-score__input:focus-visible::placeholder,
+        .table__input:focus-visible::placeholder {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #18</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #2</h2>
+                            <p>
+                                Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+                            </p>
+                        </div>
+                        <div class="homework__answer">
+                            <h2 class="homework__title">Рішення:</h2>
+                            <hr>
+                            <form class="homework__form average-score">
+                                <div class="average-score__row">
+                                    <label class="average-score__label" for="priceNumber">Price number</label>
+                                    <input id="priceNumber" type="text" class="average-score__input" value="" autocomplete="off" placeholder="0">
+                                </div>
+                                <div class="average-score__row">
+                                    <button class="average-score__btn" id="table">Get table</button>
+                                </div>
+                                <div class="average-score__row table">
+
+                                </div>
+                                <div class="average-score__row">
+                                    <button class="average-score__btn" id="sum">Get sum</button>
+                                </div>
+                                <div class="average-score__row">
+                                    <p>
+                                        Sum = <span id="average-score__sum">0</span>
+                                    </p>
+                                </div>
+                            </form>
+                            <script src="./script/task_2.js"></script>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

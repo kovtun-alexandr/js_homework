@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #3</title>
+    <style>
+        input{
+            border: none;
+        }
+        form > * {
+            margin-bottom: 1rem;
+        }
+        .trip__title {
+            font-size: 1.2rem;
+        }
+        .trip__row{
+            display: flex;
+            column-gap: .5rem;
+        }
+        .food,
+        .guide{
+            column-gap: 2.5rem;
+        }
+        .guide {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            row-gap: .5rem;
+        }
+        .food__col,
+        .guide__col {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            column-gap: .5rem;
+        }
+        .food__input,
+        .guide__input {
+            display: flex;
+            appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            cursor: pointer;
+            position: relative;
+            transition: .3s;
+        }
+        .food__input {
+            border-radius: .2rem;
+            overflow: hidden;
+        }
+        .food__input::before {
+            content: '';
+            width: 1.25rem;
+            height: 1.25rem;
+            background: #fff;
+        }
+        .food__input:checked::before {
+            background: rgb(255, 255, 255) url('./image/check.svg') 0 / 100% no-repeat;
+            border: 2px solid #0072ff;
+        }
+        .guide__input {
+            border-radius: 50%;
+        }
+        .guide__input::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid slategray;
+        }
+
+        .guide__input:checked::before {
+            border: 2px solid #0072ff;
+            background: #ffffff;
+        }
+
+        .guide__input:checked::after {
+            position: absolute;
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #0072ff;
+            border-radius: 50%;
+            transform: scale(.5);
+        }
+        .trip__btn {
+            border: 2px solid rgb(71, 71, 71);
+            border-radius: .3rem;
+            padding-block: .235rem;
+            padding-inline: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: .3s;
+            color: rgb(71, 71, 71);
+        }
+        .trip__btn:hover {
+            background-color: aqua;
+            color: rgb(71, 71, 71);
+            border-color: aqua;
+        }
+        .trip__input,
+        .table__input {
+            padding-block: .1rem;
+            padding-inline: .2rem;
+        }
+        .trip__input:focus-visible,
+        .table__input:focus-visible {
+            outline-color: aqua;
+        }
+        .trip__input::placeholder,
+        .table__input::placeholder {
+            color: #666;
+            transition: .3s;
+        }
+        .trip__input:focus-visible::placeholder,
+        .table__input:focus-visible::placeholder {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #18</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #3</h2>
+                            <p>
+                                Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати  - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+                            </p>
+                        </div>
+                        <div class="homework__answer">
+                            <h2 class="homework__title">Рішення:</h2>
+                            <hr>
+                            <form class="homework__form trip">
+                                <h3 class="trip__title">Journey stage #1 (transport):</h3>
+                                <div class="trip__row">
+                                    <select class="trip__select" name="transport" id="transport">
+                                        <option value="200">Car - 200$</option>
+                                        <option value="150" selected>Bus - 150$</option>
+                                        <option value="500">Plane - 500$</option>
+                                    </select>
+                                </div>
+                                <h3 class="trip__title">Journey stage #1 (food):</h3>
+                                <div class="trip__row food">
+                                    <div class="food__col">
+                                        <label class="food__label" for="breakfast">Breakfast - 30$</label>
+                                        <input class="food__input" type="checkbox" name="breakfast" value="30" id="breakfast">
+                                    </div>
+                                    <div class="food__col">
+                                        <label class="food__label" for="lunch">Lunch - 35$</label>
+                                        <input class="food__input" type="checkbox" name="lunch" value="35" id="lunch">
+                                    </div>
+                                    <div class="food__col">
+                                        <label class="food__label" for="dinner">Dinner - 40$</label>
+                                        <input class="food__input" type="checkbox" name="dinner" value="40" id="dinner">
+                                    </div>
+                                </div>
+                                <h3 class="trip__title">Journey stage #3 (guide):</h3>
+                                <div class="trip__row guide">
+                                    <div class="guide__col">
+                                        <label class="guide__label" for="guide_1">Guide #1 - 100$</label>
+                                        <input class="guide__input" type="radio" name="guide" id="guide_1" value="100" checked>
+                                    </div>
+                                    <div class="guide__col">
+                                        <label class="guide__label" for="guide_2">Guide #2 - 120$</label>
+                                        <input class="guide__input" type="radio" name="guide" id="guide_2" value="120">
+                                    </div>
+                                    <div class="guide__col">
+                                        <label class="guide__label" for="guide_3">Guide #3 - 150$</label>
+                                        <input class="guide__input" type="radio" name="guide" id="guide_3" value="150">
+                                    </div>
+                                </div>
+                                <div class="trip__row">
+                                    <button class="trip__btn" id="calculate">Calculate the trip</button>
+                                </div>
+                                <div class="trip__row">
+                                    <p>
+                                        Travel amount = <span id="trip__sum">0</span> $
+                                    </p>
+                                </div>
+                            </form>
+                            <script src="./script/task_3.js"></script>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
