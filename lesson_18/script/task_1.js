@@ -2,57 +2,42 @@
 // Розробити калькулятор
 
 if (confirm('Почати тестування?')) {
-    function getAddition() {
+    function calculation (operand) {
         const firstNum = parseInt(document.getElementById('firstNumber').value)
         const secondNum = parseInt(document.getElementById('secontNumber').value)
-        let sum = 0
 
-        if(!isNaN(firstNum) && !isNaN(secondNum)) 
-            sum = firstNum + secondNum 
-        else 
-            sum = ''
+        if(!isNaN(firstNum) && !isNaN(secondNum)) {
+            if (operand === '+')
+                return firstNum + secondNum
+            if (operand === '-')
+                return firstNum - secondNum
+            if (operand === '*')
+                return firstNum * secondNum
+            if (operand === '/') {
+                if (secondNum > 0)
+                    return firstNum / secondNum
+                else
+                    return '' 
+            }
+        }
 
-        document.getElementById('result').value = sum       
+        return ''
+    }
+
+    function getAddition() {
+        document.getElementById('result').value = calculation('+')    
     }
 
     function getSubtraction() {
-        const firstNum = parseInt(document.getElementById('firstNumber').value)
-        const secondNum = parseInt(document.getElementById('secontNumber').value)
-        let sum = 0
-
-        if(!isNaN(firstNum) && !isNaN(secondNum)) 
-            sum = firstNum - secondNum
-        else 
-            sum = ''
-
-        document.getElementById('result').value = sum       
+        document.getElementById('result').value = calculation('-')    
     }
 
     function getMultiplication() {
-        const firstNum = parseInt(document.getElementById('firstNumber').value)
-        const secondNum = parseInt(document.getElementById('secontNumber').value)
-        let sum = 0
-
-        if(!isNaN(firstNum) && !isNaN(secondNum)) 
-            sum = firstNum * secondNum
-        else 
-            sum = ''
-
-        document.getElementById('result').value = sum       
+        document.getElementById('result').value = calculation('*')     
     }
 
     function getDivision() {
-        const firstNum = parseInt(document.getElementById('firstNumber').value)
-        const secondNum = parseInt(document.getElementById('secontNumber').value)
-        let sum = 0
-        if (isNaN(firstNum) && isNaN(secondNum) || secondNum <= 0 ) {
-            sum = ''
-        } else {
-            sum = firstNum / secondNum
-
-        }
-
-        document.getElementById('result').value = sum       
+        document.getElementById('result').value = calculation('/')     
     }
 
     window.onload = function () {

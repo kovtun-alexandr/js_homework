@@ -7,42 +7,48 @@
 if (confirm('Почати тестування?')) {
     function getTable() {
         const tableNum = parseInt(document.querySelector('#priceNumber').value)
-        const table = document.querySelector('.table')
+        const block = document.querySelector('.table')
+        const table = document.createElement('table')
         
         table.textContent = ''
         
-        if (!isNaN(tableNum)) {          
+        if (!isNaN(tableNum)) { 
             for (let i = 0; i < tableNum; i++) {
+                let tableRow = document.createElement('tr')         
+                let tableData = document.createElement('td')
                 let input = document.createElement('input')
                 input.classList.add('table__input')
                 input.type = 'text'
                 input.name = 'score'
                 input.autocomplete ='off'
                 input.placeholder = '0'
-                table.append(input)    
+                tableData.append(input)
+                tableRow.append(tableData)
+                table.append(tableRow)    
             }
         } else {
             table.textContent = 'You didn\'t enter anything, so this is empty.'
         }
+        block.append(table)
     }
 
     function getSum() {
-        const table = document.querySelectorAll('.table__input')
-        const score = table.length
+        const inputs = document.querySelectorAll('.table__input')
+        let count = 0
         let sum = 0
 
-        for (let i = 0; i < score; i++) {
-            let tempNum = parseInt(table[i].value)
+        for (const element of inputs) {
+            let tempNum = parseInt(element.value)
             
-            if (!isNaN(tempNum))
-                sum += tempNum
-            else
-                sum += 0 
+            if (!isNaN(tempNum)){
+                sum += tempNum  
+                count++
+            }
         }
 
-        sum /= score
+        const average = count > 0 ? sum / count : 0
 
-        document.querySelector('#average-score__sum').textContent = `${sum}`
+        document.querySelector('#average-score__sum').textContent = `${average}`
     }
 
     window.onload = function() {
