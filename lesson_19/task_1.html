@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #1</title>
+    <style>
+        .form > * {
+            margin-bottom: 0.5rem;
+        }
+        form > *:last-child {
+            margin-bottom: 0;
+        }
+        .form__row {
+            display: flex;
+            column-gap: .5rem;
+        }
+        .form__input:focus-visible {
+            outline-color: aqua;
+        }
+        .form__input::placeholder {
+            color: #666;
+            transition: .3s;
+        }
+        .form__input:focus-visible::placeholder {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #19</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #1</h2>
+                            <p>
+                                Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+                            </p>
+                        </div>
+                        <div class="homework__answer">
+                            <h2 class="homework__title">Рішення:</h2>
+                            <hr>
+                            <form action="#" class="homework__form form">
+                                <div class="form__row">
+                                    <label for="val_1" class="form__label">Value #1</label>
+                                    <input type="text" class="form__input" id="val_1" autocomplete="off">
+                                </div>
+                                <div class="form__row">
+                                    <label for="val_2" class="form__label">Value #2</label>
+                                    <input type="text" class="form__input" id="val_2" autocomplete="off">
+                                </div>
+                                <div class="form__row">
+                                    <label for="val_3" class="form__label">Value #3</label>
+                                    <input type="text" class="form__input" id="val_3" autocomplete="off">
+                                </div>
+                                <div class="form__row">
+                                    <label for="val_4" class="form__label">Value #4</label>
+                                    <input type="text" class="form__input" id="val_4" autocomplete="off">
+                                </div>
+                                <div class="form__row">
+                                    <label for="val_5" class="form__label">Value #5</label>
+                                    <input type="text" class="form__input" id="val_5" autocomplete="off">
+                                </div>
+                            </form>
+                            <script src="./script/task_1.js"></script>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

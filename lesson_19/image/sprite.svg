@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width:0; height:0; overflow:hidden;" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Arrow (right) жирніший -->
+    <symbol id="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+      <!-- shaft -->
+      <path d="M3 12h12" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" fill="none"/>
+      <!-- arrow head -->
+      <path d="M13 6l7 6-7 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" fill="none"/>
+    </symbol>
+
+    <!-- Close (X) -->
+    <symbol id="icon-close" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none"/>
+    </symbol>
+
+    <!-- Snowflake -->
+    <symbol id="icon-snowflake" viewBox="0 0 24 24" aria-hidden="true">
+      <!-- vertical line -->
+      <path d="M12 2v20" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none"/>
+      <!-- horizontal line -->
+      <path d="M2 12h20" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none"/>
+      <!-- diagonal lines -->
+      <path d="M4.5 4.5l15 15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none"/>
+      <path d="M19.5 4.5l-15 15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none"/>
+      <!-- small branches on vertical -->
+      <path d="M12 6l2-1M12 6l-2-1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none"/>
+      <path d="M12 18l2 1M12 18l-2 1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none"/>
+      <!-- small branches on horizontal -->
+      <path d="M6 12l-1 2M6 12l-1-2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none"/>
+      <path d="M18 12l1 2M18 12l1-2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="none"/>
+    </symbol>
+  </defs>
+</svg>

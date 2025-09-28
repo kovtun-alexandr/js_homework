@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #2</title>
+    <style>
+        .table {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            gap: 2rem;
+        }
+        .table__wrap > * {
+            margin-bottom: .5rem;
+        }
+        .table__wrap > *:last-child {
+            margin-bottom: 0;
+        }
+        .table__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .table__title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .table__block {
+            border: 2px solid #4e4e4e;
+            border-spacing: 0;
+        }
+        .table__block.active {
+            border-color: red;
+        }
+        .table__data{
+            padding-inline: 1.2rem;
+            padding-block: .8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #19</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #2</h2>
+                            <p>
+                                Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до відповідної таблиці додається червона рамка (спробуйте додати можливість відображення кількості кліків біля назви таблиці з використанням відповідно доданого для цього атрибута).
+                            </p>
+                        </div>
+                        <div class="homework__answer">
+                            <h2 class="homework__title">Рішення:</h2>
+                            <hr>
+                            <div class="homework__table table"></div>
+                            <script src="./script/task_2.js"></script>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

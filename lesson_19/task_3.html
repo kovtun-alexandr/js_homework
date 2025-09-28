@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #3</title>
+    <style>
+        .icon {
+            width: 1.2em;
+            height: 1.2em;
+            display: inline-block;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+        .player {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .list-player,
+        .chosen-player {
+            display: flex;
+            flex-direction: column;
+        }
+        .list-player > *,
+        .chosen-player > * {
+            margin-bottom: 1rem;
+        }
+        .list-player > *:last-child,
+        .chosen-player > *:last-child {
+            margin-bottom: 0;
+        }
+        .list-player__list,
+        .chosen-player__list {
+            flex-grow: 1;
+            border: 2px solid gray;
+            padding: .5rem;
+        }
+        .list-player__list > *,
+        .chosen-player__list > * {
+            margin-bottom: .5rem;
+        }
+        .list-player__list > *:last-child,
+        .chosen-player__list > *:last-child {
+            margin-bottom: 0;
+        }
+        .list-player__list:not(:has(.item-player)),
+        .chosen-player__list:not(:has(.item-player)) {
+            border: none;
+        }
+        .title-player {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .item-player {
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid lightslategray;
+            align-items: center;
+            padding: .5rem;
+        }
+        .item-player__buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .item-player__moving,
+        .item-player__remove {
+            padding: .2rem;
+            line-height: 1;
+        }
+        .list-player__list .item-player__moving {
+            color: green;
+        }
+        .list-player__list .item-player__moving:hover {
+            color: rgb(25, 107, 25);
+        }
+        .list-player__list .item-player__moving:hover svg {
+            filter: drop-shadow(0px 0px 5px rgb(4, 53, 0))
+        }
+        .chosen-player__list .item-player__moving {
+            color: red;
+            transform: rotateY(180deg);
+        }
+        .chosen-player__list .item-player__moving:hover {
+            color: rgb(185, 0, 0);
+        }
+        .chosen-player__list .item-player__moving:hover svg {
+            filter: drop-shadow(0px 0px 5px rgb(255, 0, 0))
+        }
+        .item-player__remove:hover {
+            color: rgb(255, 0, 0);
+        }
+        form > * {
+            margin-bottom: 0.5rem;
+        }
+        form > *:last-child {
+            margin-bottom: 0;
+        }
+        .add-player__row {
+            display: flex;
+            column-gap: .5rem;
+        }
+        .add-player__input:focus-visible {
+            outline-color: aqua;
+        }
+        .add-player__input::placeholder {
+            color: #666;
+            transition: .3s;
+        }
+        .add-player__input:focus-visible::placeholder {
+            opacity: 0;
+        }
+        .add-player__btn {
+            border: 2px solid rgb(71, 71, 71);
+            border-radius: .3rem;
+            padding-block: .235rem;
+            padding-inline: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: .3s;
+            color: rgb(71, 71, 71);
+        }
+        .add-player__btn:hover {
+            background-color: aqua;
+            color: rgb(71, 71, 71);
+            border-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #19</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #3</h2>
+                            <p>
+                                Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен переміщається у загальний список.
+                            </p>
+                        </div>
+                        <div class="homework__answer">
+                            <h2 class="homework__title">Рішення:</h2>
+                            <hr>
+                            <div class="homework__player player">
+                                <div class="player__list list-player">
+                                    <h3 class="list-player__title title-player">General players</h3>
+                                    <div class="list-player__list">
+                                        <div class="list-player__item item-player">
+                                            <h4 class="item-player__title">Ivan Ivanov</h4>
+                                            <div class="item-player__buttons">
+                                                <button class="item-player__moving">
+                                                    <svg class="icon icon-arrow" role="img" aria-label="Arrow" aria-hidden="false">
+                                                        <use href="./image/sprite.svg#icon-arrow"></use>
+                                                    </svg>
+                                                </button>
+                                                <button class="item-player__remove">
+                                                    <svg class="icon icon-close" role="img" aria-label="Close" aria-hidden="false">
+                                                        <use href="./image/sprite.svg#icon-close"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="list-player__item item-player">
+                                            <h4 class="item-player__title">Ivan Petrov</h4>
+                                            <div class="item-player__buttons">
+                                                <button class="item-player__moving">
+                                                    <svg class="icon icon-arrow" role="img" aria-label="Arrow" aria-hidden="false">
+                                                        <use href="./image/sprite.svg#icon-arrow"></use>
+                                                    </svg>
+                                                </button>
+                                                <button class="item-player__remove">
+                                                    <svg class="icon icon-close" role="img" aria-label="Close" aria-hidden="false">
+                                                        <use href="./image/sprite.svg#icon-close"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="player__chosen chosen-player">
+                                    <h3 class="chosen-player__title title-player">Selected players</h3>
+                                    <div class="chosen-player__list">
+                                        <div class="chosen-player__item item-player">
+                                            <h4 class="item-player__title">Petr Petrov</h4>
+                                            <div class="item-player__buttons">
+                                                <button class="item-player__moving">
+                                                    <svg class="icon icon-arrow" role="img" aria-label="Arrow" aria-hidden="false">
+                                                        <use href="./image/sprite.svg#icon-arrow"></use>
+                                                    </svg>
+                                                </button>
+                                                <button class="item-player__remove">
+                                                    <svg class="icon icon-close" role="img" aria-label="Close" aria-hidden="false">
+                                                        <use href="./image/sprite.svg#icon-close"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="#" class="player__form add-player">
+                                    <h3 class="add-player__title title-player">Create player</h3>
+                                    <div class="add-player__row">
+                                        <label for="firstName" class="add-player__label">First Name</label>
+                                        <input type="text" id="firstName" class="add-player__input" autocomplete="off">
+                                    </div>
+                                    <div class="add-player__row">
+                                        <label for="lastName" class="add-player__label">Last Name</label>
+                                        <input type="text" id="lastName" class="add-player__input" autocomplete="off">
+                                    </div>
+                                    <div class="add-player__row">
+                                        <button class="add-player__btn">Add Player</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <script src="./script/task_3.js"></script>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
