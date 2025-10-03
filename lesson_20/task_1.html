@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #1</title>
+    <style>
+        .wrap{
+            display: flex;
+            flex-direction: column;
+        }
+        .wrap > * {
+            margin-bottom: 1rem;
+        }
+        .wrap > *:last-child {
+            margin-bottom: 0;
+        }
+        .filter {
+            display: flex;
+            justify-content: space-between;
+            padding-block: 1rem;
+            gap: 1rem;
+        }
+        .model,
+        .year {
+            display: flex;
+            gap: 1rem;
+        }
+        .model__select,
+        .year__select {
+            padding-block: .2rem;
+            padding-inline: .5rem;
+            border-radius: .2rem;
+            border: 1px solid transparent;
+            transition: .3s;
+        }
+        .model__select:hover,
+        .year__select:hover {
+            border: 1px solid gray;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5)
+        }
+        .title-filter {
+            font-weight: 600;
+        }
+        .car__list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .car__item {
+            display: flex;
+            flex-direction: column;
+            transition: .3s;
+        }
+        .car__item:hover {
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5)
+        }
+        .car__item > * {
+            margin-bottom: .5rem;
+        }
+        .car__item > *:last-child {
+            margin-bottom: 0;
+        }
+        .car__header {
+            flex-grow: 1;
+            background-color: cadetblue;
+            aspect-ratio: 16 / 10;
+        }
+        .car__header img {
+            height: 100%;
+            object-fit: cover;
+        }
+        .car__body {
+            display: flex;
+            flex-direction: column;
+            padding: .5rem;
+        }
+        .car__body > * {
+            margin-bottom: .5rem;
+        }
+        .car__body > *:last-child {
+            margin-bottom: 0;
+        }
+        .car__title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .info-car {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <script src="./script/task_1.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #20</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #1</h2>
+                            <p>
+                                Дано список автомобілів (марка, рік випуску, ціна). Сформувати елементи для фільтрування з використанням випадаючого списку (контент цих випадаючих списків сформувати у залежності від переданого списку).
+                            </p>
+                        </div>
+                        <div class="homework__answer">
+                            <h2 class="homework__title">Рішення:</h2>
+                            <hr>
+                            <div class="homework__wrap wrap">
+                                <div class="wrap__filter filter">
+                                    <div class="filter__model model">
+                                        <h3 class="model__title title-filter">Model:</h3>
+                                        <select class="model__select" name="model">
+                                            <option value="">All</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter__year year">
+                                        <h3 class="year__title title-filter">Year of release:</h3>
+                                        <select class="year__select" name="year">
+                                            <option value="">All</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="wrap__car car"></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
