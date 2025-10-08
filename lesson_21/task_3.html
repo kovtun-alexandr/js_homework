@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #3</title>
+    <style>
+        .popup {
+            position: fixed;
+            top: 0; 
+            left: 0;
+            width: 100%; 
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .popup--visible { 
+            opacity: 1; 
+        }
+        .popup__content {
+            position: relative;
+            background: white;
+            padding: 3rem;
+            border-radius: .5rem;
+            text-align: center;
+            min-width: 15.6rem;
+        }
+        .popup__title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .popup__content > * {
+            margin-bottom: 1rem;
+        }
+        .popup__content > *:last-child {
+            margin-bottom: 0;
+        }
+        .popup__close {
+            padding: .5rem;
+            line-height: 1;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        .popup__close:hover {
+            color: rgb(255, 0, 0);
+        }
+        .icon {
+            width: 1.5em;
+            height: 1.5em;
+            display: inline-block;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+        .date {
+            display: flex;
+            flex-direction: column;
+        }
+        .date__item {
+            gap: .5rem;
+        }
+        .date > * {
+            margin-bottom: 1rem;
+        }
+        .date > *:last-child {
+            margin-bottom: 0;
+        }
+        form > * {
+            margin-bottom: 0.5rem;
+        }
+        form > *:last-child {
+            margin-bottom: 0;
+        }
+        [class*="__row"] {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        [class*="__input"] {
+            padding: .2rem;
+        }
+        [class*="__input"]:focus-visible {
+            outline-color: aqua;
+        }
+        [class*="__input"]::placeholder {
+            color: #666;
+            transition: .3s;
+        }
+        [class*="__input"]:focus-visible::placeholder {
+            opacity: 0;
+        }
+        [class*="__btn"] {
+            align-self: flex-start;
+            border: 2px solid rgb(71, 71, 71);
+            border-radius: .3rem;
+            padding-block: .235rem;
+            padding-inline: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: .3s;
+            color: rgb(71, 71, 71);
+        }
+        [class*="__btn"]:hover {
+            background-color: aqua;
+            color: rgb(71, 71, 71);
+            border-color: aqua;
+        }
+    </style>
+    <script src="./script/task_3.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #21</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #3</h2>
+                            <p>
+                                <ol>
+                                    <li>
+                                        Виводити на екран скільки хвилин користувач вже на сайті
+                                    </li>
+                                    <li>
+                                        Вводимо час початку процедури (процедура триває 30хв). Визначити, чи процедура ще триває.
+                                    </li>
+                                    <li>
+                                        Визначити скільки залишилось до кінця робочого дня (до 17.00)
+                                    </li>
+                                    <li>
+                                        Створити функцію, яка дозволяє визначити, чи знаходиться вказана дата і час у межах поточного тижня (від понеділка 0 год, 0хв, до неділі 23год.59хв)
+                                    </li>
+                                    <li>
+                                        При заході на сайт вітати користувача або відображати повідомлення про те,  скільки хвилин залишилось до початку робочого дня (початок о 8.00).
+                                    </li>
+                                    <li>
+                                        Вивести скільки зараз годин у Лондоні, Парижі, Сіднеї.
+                                    </li>
+                                    <li>
+                                        Дано список студентів (ім’я і дата народження: у формі тексту (день.місяць.рік). Знайти найстаршого студента
+                                    </li>
+                                    <li>
+                                        Визначити скільки пройшло секунд після заходу на сайт перш ніж користувач зробив рух мишкою.
+                                    </li>
+                                    <li>
+                                        Користувачка планувала оформила дектретну відпустку на 200 днів (дата початку відпустки вводиться). Визначити чи відпустка вже триває і чи не закінчилась.
+                                    </li>
+                                    <li>
+                                        Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він придатним на даний момент.
+                                    </li>
+                                    <li>
+                                        Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і  вставкою.
+                                    </li>
+                                </ol>
+                            </p>
+                        </div>
+                        <div class="homework__answer">
+                            <h2 class="homework__title">Рішення:</h2>
+                            <hr>
+                            <ol class="homework__list date">
+                                <li class="date__item time-site">
+                                    <p>You have been on the page for <span id="time-site">0</span> seconds.</p>
+                                </li>
+                                <li class="date__item procedure">
+                                    <form class="procedure__form" action="#">
+                                        <div class="procedure__row">
+                                            <label for="procedure-time" class="procedure__label">Enter the procedure start time</label>
+                                            <input type="text" id="procedure-time" class="procedure__input" placeholder="12:30" autocomplete="off">
+                                            <button type="submit" class="procedure__btn">Check</button>
+                                        </div>
+                                        <p class="procedure__message"></p>
+                                    </form>
+                                </li>
+                                <li class="date__item end-work">
+                                    <p>There is still time until the end of the workday: <span id="end-work"></span> min</p>
+                                </li>
+                                <li class="date__item current-week">
+                                    <form class="current-week__form" action="#">
+                                        <div class="current-week__row">
+                                            <label for="current-week" class="current-week__label">Enter the date in the format: <span>yyyy-mm-dd hh:mm</span></label>
+                                            <input type="text" id="current-week" class="current-week__input" placeholder="2025-10-05 12:30" autocomplete="off">
+                                            <button type="submit" class="current-week__btn">Check week</button>
+                                        </div>
+                                        <p class="current-week__message"></p>
+                                    </form>
+                                </li>
+                                <li class="date__item greet-user">
+                                    <p class="greet-user__text">Popap</p>
+                                </li>
+                                <li class="date__item zpne">
+                                    <p class="zone__text">Time in the city:</p>
+                                </li>
+                                <li class="date__item oldest">
+                                    <p>The oldest student: <span id="oldest"></span></p>
+                                </li>
+                                <li class="date__item mouse-movement">
+                                    <p>You moved your mouse over: <span id="mouse">00:00 s</span></p>
+                                </li>
+                                <li class="date__item vacation">
+                                    <p>Maternity leave</p>
+                                    <form class="vacation__form" action="#">
+                                        <div class="vacation__row">
+                                            <label for="vacation" class="vacation__label">Enter the date of manufacture:</label>
+                                            <input type="date" id="vacation" class="vacation__input" autocomplete="off">
+                                        </div>
+                                        <div class="vacation__row">
+                                            <button type="submit" class="vacation__btn">Check vacation</button>
+                                        </div>
+                                        <p class="vacation__message"></p>
+                                    </form>
+                                </li>
+                                <li class="date__item expiration">
+                                    <p>Expiration date</p>
+                                    <form class="expiration__form" action="#">
+                                        <div class="expiration__row">
+                                            <label for="procedure-days" class="expiration__label">Enter the date of manufacture:</label>
+                                            <input type="date" id="procedure-days" class="expiration__input" autocomplete="off">
+                                        </div>
+                                        <div class="expiration__row">
+                                            <label for="procedure-days" class="expiration__label">Enter the number of days of validity</label>
+                                            <input type="text" id="procedure-days" class="expiration__input" placeholder="12" autocomplete="off">
+                                        </div>
+                                        <div class="expiration__row">
+                                            <button type="submit" class="expiration__btn">Check expiration</button>
+                                        </div>
+                                        <p class="expiration__message"></p>
+                                    </form>
+                                </li>
+                                <li class="date__item sort">
+                                    <p>Sorting an array of 1000 elements from 1 to 800</p>
+                                </li>
+                            </ol>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
