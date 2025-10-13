@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #3</title>
+    <style>
+        .answer__list > * {
+            margin-bottom: 0.5rem;
+        }
+        .answer__list > *:last-child {
+            margin-bottom: 0;
+        }
+        .answer__item > * {     
+            margin-bottom: 0.5rem;
+        }
+        .answer__item > *:last-child {
+            margin-bottom: 0;
+        }
+        .arr__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+        .arr__item {
+            flex-shrink: 0;
+            color: #2c2b5e;
+        }
+        .select-years__string .arr__item {
+            flex-shrink: 1;
+        }
+        form > * {
+            margin-bottom: 0.5rem;
+        }
+        form > *:last-child {
+            margin-bottom: 0;
+        }
+        [class*="__row"] {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        [class*="__input"] {
+            padding: .2rem;
+        }
+        [class*="__input"]:focus-visible {
+            outline-color: aqua;
+        }
+        [class*="__input"]::placeholder {
+            color: #666;
+            transition: .3s;
+        }
+        [class*="__input"]:focus-visible::placeholder {
+            opacity: 0;
+        }
+        [class*="__btn"] {
+            align-self: flex-start;
+            border: 2px solid rgb(71, 71, 71);
+            border-radius: .3rem;
+            padding-block: .235rem;
+            padding-inline: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: .3s;
+            color: rgb(71, 71, 71);
+        }
+        [class*="__btn"]:hover {
+            background-color: aqua;
+            color: rgb(71, 71, 71);
+            border-color: aqua;
+        }
+    </style>
+    <script src="./script/task_3.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #22</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #3</h2>
+                            <p>
+                                <ol>
+                                    <li>
+                                        Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази).
+                                    </li>
+                                    <li>
+                                        Дано масив рядків. Вивести ті, у яких немає цифр.
+                                    </li>
+                                    <li>
+                                        Дано масив рядків. Вивести ті, у яких є голосні літери.
+                                    </li>
+                                    <li>
+                                        Дано масив рядків. Вивести ті, у яких немає голосних літер.
+                                    </li>
+                                    <li>
+                                        Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.
+                                    </li>
+                                    <li>
+                                        Дано рядок тексту, вивести усі числа, які є у тексті.
+                                    </li>
+                                    <li>
+                                        Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.
+                                    </li>
+                                    <li>
+                                        Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками.
+                                    </li>
+                                    <li>
+                                        Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy- рік).
+                                    </li>
+                                    <li>
+                                        Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку.
+                                    </li>
+                                    <li>
+                                        Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434» ). Знайти усі такі номери (при цьому символи “-” можуть бути, а можуть і не бути, тобто так «4142343323233434».
+                                    </li>
+                                    <li>
+                                        Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”, але не обов”язково у кінці). Наприклад: “https://company.gov.ua”
+                                    </li>
+                                    <li>
+                                        Вибрати усі роки між 2020 та 2049 з отриманого повідомлення
+                                    </li>
+                                    <li>
+                                        Дано номер телефону. Перевірити, чи є цей телефон телефоном оператора Киїівстар
+                                    </li>
+                                    <li>
+                                        Користувач вводить прізвище та ім’я в одному рядку через пробіл.  Замінити пробіл на дефіс.
+                                    </li>
+                                    <li>
+                                            Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «місяць/рік»
+                                    </li>
+                                </ol>
+                            </p>
+                        </div>
+                        <div class="homework__answer answer">
+                            <h2 class="answer__title">Рішення:</h2>
+                            <div class="answer__strings">
+                                <p>Array of strings:</p>
+                            </div>
+                            <div class="answer__words">
+                                <p>Array of words:</p>
+                            </div>
+                            <hr>
+                            <ol class="answer__list">
+                                <li class="answer__item there-numbers">
+                                    <p>Strings that have numbers:</p>
+                                </li>
+                                <li class="answer__item no-number">
+                                    <p>Strings that do not have a number:</p>
+                                </li>
+                                <li class="answer__item there-vowels">
+                                    <p>Words with vowels:</p>
+                                </li>
+                                <li class="answer__item no-vowels">
+                                    <p>Words without vowels:</p>
+                                </li>
+                                <li class="answer__item search-number">
+                                    <p>Print those strings that contain either the digit 1 or the digit 3:</p>
+                                </li>
+                                <li class="answer__item all-numbers">
+                                    <p>Print all numbers in the text:</p>
+                                    <div class="all-numbers__string">
+                                        <p>Text:</p>
+                                    </div>
+                                    <div class="all-numbers__answer">
+                                        <p>Numbers:</p>
+                                    </div>
+                                </li>
+                                <li class="answer__item punctuation-marks">
+                                    <p>Find all punctuation marks that were used:</p>
+                                    <div class="punctuation-marks__string">
+                                        <p>Text:</p>
+                                    </div>
+                                    <div class="punctuation-marks__answer">
+                                        <p>Punctuation marks:</p>
+                                    </div>
+                                </li>
+                                <li class="answer__item all-components">
+                                    <p>Output all components separated by punctuation marks:</p>
+                                    <div class="all-components__string">
+                                        <p>Text:</p>
+                                    </div>
+                                    <div class="all-components__answer">
+                                        <p>Components:</p>
+                                    </div>
+                                </li>
+                                <li class="answer__item contain-date">
+                                    <p>Check if a string contains a date in the format dd.mm.yyyy:</p>
+                                    <div class="contain-date__string">
+                                        <p>Text:</p>
+                                    </div>
+                                    <div class="contain-date__answer">
+                                        <p>Date:</p>
+                                    </div>
+                                </li>
+                                <li class="answer__item two-numbers">
+                                    <p>Count the number of two-digit numbers in a string:</p>
+                                    <div class="two-numbers__string">
+                                        <p>Text:</p>
+                                    </div>
+                                    <div class="two-numbers__answer">
+                                        <p>Count:</p>
+                                    </div>
+                                </li>
+                                <li class="answer__item bank-card">
+                                    <p>Determine if a string of text could be a bank card number:</p>
+                                    <div class="bank-card__string">
+                                        <p>Number card:</p>
+                                    </div>
+                                    <div class="bank-card__answer">
+                                        <p>Answer:</p>
+                                    </div>
+                                </li>
+                                <li class="answer__item gov-site">
+                                    <p>Determine if a site is government-owned:</p>
+                                    <div class="gov-site__string">
+                                        <p>Site:</p>
+                                    </div>
+                                    <div class="gov-site__answer">
+                                        <p>Answer:</p>
+                                    </div>
+                                </li>
+                                <li class="answer__item select-years">
+                                    <p>Select all years between 2020 and 2049 from the received message:</p>
+                                    <div class="select-years__string">
+                                        <p>Text:</p>
+                                    </div>
+                                    <div class="select-years__answer">
+                                        <p>Answer:</p>
+                                    </div>
+                                </li>
+                                <li class="answer__item kyivstar-codes">
+                                    <p>Check if this phone is a Kyivstar phone:</p>
+                                    <div class="kyivstar-codes__string">
+                                        <p>Numbers:</p>
+                                    </div>
+                                    <div class="kyivstar-codes__answer">
+                                        <p>These telephones belong to the Kyivstar operator:</p>
+                                    </div>
+                                </li>
+                                <li class="answer__item name">
+                                    <form action="" class="name__form">
+                                        <div class="name__row">
+                                            <ladel class="name__label" for="name">Enter your last name and first name separated by a space:</ladel>
+                                            <input type="text" id="name" class="name__input" autocomplete="off" placeholder="Ivanov Ivan">
+                                        </div>
+                                        <div class="name__row">
+                                            <button class="name__btn">Check</button>
+                                        </div>
+                                    </form>
+                                    <p class="name__message"></p>
+                                </li>
+                                <li class="answer__item date">
+                                    <form action="" class="date__form">
+                                        <div class="date__row">
+                                            <ladel class="date__label" for="date">Enter the date in the format dd.mm.yyyy:</ladel>
+                                            <input type="text" id="date" class="date__input" autocomplete="off" placeholder="11.10.2025">
+                                        </div>
+                                        <div class="date__row">
+                                            <button class="date__btn">Check</button>
+                                        </div>
+                                    </form>
+                                    <p class="date__message"></p>
+                                </li>
+                            </ol>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

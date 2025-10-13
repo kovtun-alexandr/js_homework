@@ -98,7 +98,7 @@ body {
     color: #000;
     font-size: 1rem;
     line-height: 1.5;
-    background: #30D5C8;
+    background-color: #30D5C8;
 }
 
 .wrapper {
@@ -176,7 +176,8 @@ body {
     list-style: disc;
 }
 
-.homework__title {
+.homework__title,
+.answer__title {
     font-size: 1.5rem;
 }
 

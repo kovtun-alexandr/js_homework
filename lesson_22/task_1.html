@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #1</title>
+    <style>
+        form > * {
+            margin-bottom: 0.5rem;
+        }
+        form > *:last-child {
+            margin-bottom: 0;
+        }
+        [class*="__row"] {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        [class*="__input"] {
+            padding: .1rem;
+            width: 2rem;
+        }
+        [class*="__input"]:focus-visible {
+            outline-color: aqua;
+        }
+        [class*="__input"]::placeholder {
+            color: #666;
+            transition: .3s;
+        }
+        [class*="__input"]:focus-visible::placeholder {
+            opacity: 0;
+        }
+        [class*="__btn"] {
+            align-self: flex-start;
+            border: 2px solid rgb(71, 71, 71);
+            border-radius: .3rem;
+            padding-block: .235rem;
+            padding-inline: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: .3s;
+            color: rgb(71, 71, 71);
+        }
+        [class*="__btn"]:hover {
+            background-color: aqua;
+            color: rgb(71, 71, 71);
+            border-color: aqua;
+        }
+    </style>
+    <script src="./script/task_1.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #22</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #1</h2>
+                            <p>
+                                Користувач може змінювати колір фону, що вибирає користувач з використанням <code>&lt;input type="color"&gt;</code>. Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін протягом одного сеансу.
+                            </p>
+                        </div>
+                        <div class="homework__answer answer">
+                            <h2 class="answer__title">Рішення:</h2>
+                            <hr>
+                            <div class="answer__block">
+                                <form action="#" class="answer__form form">
+                                    <div class="form__change">Count of changes: <span id="count">0</span></div>
+                                    <div class="form__row">
+                                        <label for="color" class="form__labek">Choose a color:</label>
+                                        <input type="color" id="color" class="form__input">
+                                    </div>
+                                    <div class="form__row">
+                                        <button class="form__btn">Add color</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
