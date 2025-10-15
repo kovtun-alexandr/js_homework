@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>Задача #1</title>
+    <style>
+        .header-answer > *,
+        .block-answer > * {
+            margin-bottom: .5rem;
+        }
+        .header-answer > *:last-child,
+        .block-answer > *:last-child {
+            margin-bottom: 0;
+        }
+        .header-answer > div,
+        .block-answer > div {
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.2rem;
+            margin-left: 1rem;
+        }
+    </style>
+    <script src="./script/task_1.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <h2>Домашня робота #23</h2>
+            </div>
+        </header>
+        <main class="page">
+            <section class="homework">
+                <div class="homework__container">
+                    <article class="homework__body">
+                        <div class="homework__condition">
+                            <h2 class="homework__title">Задача #1</h2>
+                            <p>
+                                Дано клас PhoneNumber. Створити функцію перетворення до string, при якому на основі номера виводиться оператор (050…. 🡪 Vodafone, 096… 🡪 Kyivstar, ….)
+                            </p>
+                        </div>
+                        <div class="homework__answer answer">
+                            <h2 class="answer__title">Рішення:</h2>
+                            <div class="answer__header header-answer">
+                            </div>
+                            <hr>
+                            <div class="answer__block block-answer">
+                                <h3 class="block-answer__title">Phone numbers 🡪 Name operators:</h3>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__cotyright">
+                    &copy; Oleksander Kovtun
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
