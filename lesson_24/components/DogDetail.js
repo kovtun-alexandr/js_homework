@@ -86,7 +86,7 @@ export class DogDetail {
     }
 
     backClick() {
-        window.location.href = '/lesson_24/parts/gallety.html'
+        window.location.href = 'gallety.html'
     }
 
     render() {
