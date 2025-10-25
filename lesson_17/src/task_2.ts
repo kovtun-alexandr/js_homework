@@ -3,14 +3,17 @@
 
 if (confirm('Почати тестування?')) {
     class CompanyCar {
-        static driverName:string
-        static brandName:string
-        static number:string
+        driverName:string = ''
+        brandName:string = ''
+        number:string = ''
+        static objCompanyCar: CompanyCar
 
-        static {
-            this.driverName = 'Oleksandr'            
-            this.brandName = 'Mercedes-benz'
-            this.number = 'АХ8106KA'
+        constructor(name: string, carBrand: string, carNumber: string) {
+            if(CompanyCar.objCompanyCar) return CompanyCar.objCompanyCar
+            this.driverName =  name          
+            this.brandName = carBrand
+            this.number = carNumber
+            CompanyCar.objCompanyCar = this
         }
 
         /**
@@ -19,9 +22,9 @@ if (confirm('Почати тестування?')) {
          */
         public toString() {
             return `
-                <div>Ім"я водія: ${CompanyCar.driverName}</div>
-                <div>Марка автомобіля: ${CompanyCar.brandName}</div>
-                <div>Номер автомобіля: ${CompanyCar.number}</div>`
+                <div>Ім"я водія: ${this.driverName}</div>
+                <div>Марка автомобіля: ${this.brandName}</div>
+                <div>Номер автомобіля: ${this.number}</div>`
         }
     }
 
@@ -30,8 +33,10 @@ if (confirm('Почати тестування?')) {
         <hr>
     `)
 
-    const carOne = new CompanyCar()
+    const carOne = new CompanyCar('Oleksandr', 'Mercedes-benz', 'АХ8106KA')
     document.write(`${carOne.toString()}`)
+    const carTwo = new CompanyCar('Pavel', 'Mazda', 'АХ4305ХК')
+    document.write(`${carTwo.toString()}`)
 } else {
     alert(`Нажаль ви відмовились від теста 😞`)
 }
