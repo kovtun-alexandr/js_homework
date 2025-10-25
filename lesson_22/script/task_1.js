@@ -28,11 +28,9 @@ if (confirm('Почати тестування?')) {
 
         addColor() {
             const color = localStorage.getItem('color')
-
-            console.log(color)
     
             if(!color) {
-                this.inputEl.value = this.GetBGColorBody()
+                this.inputEl.value = this.getBGColorBody()
             } else {
                 this.bodyEl.style.backgroundColor = color
                 this.inputEl.value = color

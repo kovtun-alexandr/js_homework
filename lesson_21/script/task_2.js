@@ -53,18 +53,34 @@ if (confirm('Почати тестування?')) {
         }
 
         deposit(amount) {
-            validateAmount(amount)
+            this.validateAmount(amount)
             this.balance += amount
         }
 
         withdrow(amount) {
-            validateAmount(amount)
+            this.validateAmount(amount)
             try {
                 if (amount > this.balance) throw new IsNotEnoughMoneyError()
             } catch (error) {
                 console.log(error.message)
             }
             this.balance -= amount
+        }
+
+        validateAmount(amount) {
+            try {
+                if (isNaN(amount)) throw new IsNotNumberError()
+                if (amount <= 0) throw new IsNegativeNumberError()
+            } catch (error) {
+                if (error instanceof IsNotNumberError) {
+                    console.log(error.message + ' Write only numbers')
+                } else if (error instanceof IsNegativeNumberError) {
+                    console.log(error.message + ' The amount must be greater than 0.')
+                } else console.log(error.message)
+                return false
+            }
+
+            return true
         }
 
         toString() {
@@ -81,7 +97,7 @@ if (confirm('Почати тестування?')) {
         }
 
         deposit(amount) {
-            validateAmount(amount)
+            this.validateAmount(amount)
 
             if (this.creditUsed > 0) {
                 if (amount >= this.creditUsed) {
@@ -97,7 +113,7 @@ if (confirm('Почати тестування?')) {
         }
 
         withdrow(amount) {
-            validateAmount(amount)
+            this.validateAmount(amount)
 
             if (amount <= this.balance) {
                 super.withdrow(amount)
@@ -124,22 +140,6 @@ if (confirm('Почати тестування?')) {
         toString() {
             return `${super.toString()} - Credit used: ${this.creditUsed} $ - Credit rate: ${this.creditRate}%`
         }
-    }
-
-    function validateAmount(amount) {
-        try {
-            if (isNaN(amount)) throw new IsNotNumberError()
-            if (amount <= 0) throw new IsNegativeNumberError()
-        } catch (error) {
-            if (error instanceof IsNotNumberError) {
-                console.log(error.message + ' Write only numbers')
-            } else if (error instanceof IsNegativeNumberError) {
-                console.log(error.message + ' The amount must be greater than 0.')
-            } else console.log(error.message)
-            return false
-        }
-
-        return true
     }
 
     window.addEventListener('load', () => {
