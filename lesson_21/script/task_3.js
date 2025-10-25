@@ -523,7 +523,7 @@ if (confirm('Почати тестування?')) {
             e.preventDefault();
             this.message.textContent = '';
 
-            this.getInputValues();
+            this.inputValues();
 
             try {
                 if (!this.dateValue || isNaN(this.dayValue) || this.dayValue === 0) {
@@ -550,8 +550,8 @@ if (confirm('Почати тестування?')) {
             this.message.textContent = this.getMessage();
         }
 
-        getInputValues() {
-            throw new Error('getInputValues() must be implemented');
+        inputValues() {
+            throw new Error('inputValues() must be implemented');
         }
 
         getMessage() {
@@ -570,7 +570,7 @@ if (confirm('Почати тестування?')) {
             this.dayValue = 200;
         }
 
-        getInputValues() {
+        inputValues() {
             this.dateValue = this.input.value.trim();
         }
 
@@ -592,7 +592,7 @@ if (confirm('Почати тестування?')) {
             this.inputs = document.querySelectorAll(inputsEl);
         }
 
-        getInputValues() {
+        inputValues() {
             this.dateValue = this.inputs[0].value.trim();
             this.dayValue = Number(this.inputs[1].value.trim());
         }

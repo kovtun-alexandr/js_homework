@@ -216,7 +216,7 @@ if (confirm('Почати тестування?')) {
             const yearSelect = document.querySelector('.year__select')
             const filterContainer = document.querySelector(this.parentElement)
 
-            filterContainer.addEventListener('change', () => {
+            filterContainer.addEventListener('change', (e) => {
                 const selectedBrand = brandSelect.value
                 const selectedYear = yearSelect.value
 
@@ -226,7 +226,27 @@ if (confirm('Почати тестування?')) {
                     return brandMatch && yearMatch
                 })
                 carsListInstance.update(filteredCars)
+
+                if (e.target === brandSelect) {
+                    const filteredYears = this.carsData
+                        .filter(car => !selectedBrand || car.brand === selectedBrand)
+                        .map(car => car.year)
+                    this.updateSelectOptions(yearSelect, filteredYears)
+                }
+
+                if (e.target === yearSelect) {
+                    const filteredBrands = this.carsData
+                        .filter(car => !selectedYear || car.year === Number(selectedYear))
+                        .map(car => car.brand)
+                    this.updateSelectOptions(brandSelect, filteredBrands)
+                }
             })
+        }
+
+        updateSelectOptions(selectEl, values) {
+            selectEl.innerHTML = '<option value="">All</option>'
+            const options = this.createOptionsSelect(values)
+            options.forEach(opt => selectEl.append(opt))
         }
 
         render() {
