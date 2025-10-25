@@ -52,7 +52,7 @@ if (confirm('Почати тестування?')) {
 
     // 6)
     function findAllNumbers(string) {
-        return string.match(/\d/g)
+        return string.match(/\d+/g)
     }
 
     // 7)
@@ -77,7 +77,7 @@ if (confirm('Почати тестування?')) {
 
     // 10)
     function twoDigitNumbers(string) {
-        const count = string.match(/\d{2}/g)
+        const count = string.match(/\b\d{2}\b/g)
 
         return count ? count.length : 0
     }

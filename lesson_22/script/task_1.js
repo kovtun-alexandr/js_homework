@@ -5,66 +5,74 @@
 // змін протягом одного сеансу.
 
 if (confirm('Почати тестування?')) {
-    function changeColor() {
-        const inputColor = document.querySelector('.form__input')
-        const bodyEl = document.querySelector('body')
-        const countEl = document.getElementById('count')
-        
-        countEl.innerText = countChange()
+    class BGColor {
+        constructor(bodyEl, inputEl, btnEl) {
+            this.bodyEl = document.querySelector(bodyEl)
+            this.inputEl = document.querySelector(inputEl)
+            this.btnEl = document.querySelector(btnEl)
+            this.count = parseInt(sessionStorage.getItem('count')) || 0 
+            this.addColor()
 
-        localStorage.setItem('color', inputColor.value)
-        bodyEl.style.backgroundColor = localStorage.getItem('color')
-    }
-
-    function addColor() {
-        const bodyEl = document.querySelector('body')
-        const inputEl = document.querySelector('.form__input')
-        const color = localStorage.getItem('color')
-
-        if(!color) {
-            inputEl.value = bgColorBody()
-        } else {
-            bodyEl.style.backgroundColor = color
-            inputEl.value = color
+            this.btnEl.addEventListener('click', this.changeColor.bind(this))
+            window.addEventListener('storage', this.onChangeStorage)
         }
-    }
 
-    function countChange() {
-        let count = parseInt(sessionStorage.getItem('count')) || 0
-        count++
+        changeColor() {
+            const countEl = document.getElementById('count')
 
-        sessionStorage.setItem('count', count)
-
-        return count
-    }
-
-    function bgColorBody() {
-        const bodyEl = document.querySelector('body')
-        const style = window.getComputedStyle(bodyEl)
-        const bgColor = style.backgroundColor.replace(/rgb\(|\)/g, '')
-        const [r, g, b] = bgColor.split(',').map(num => parseInt(num.trim()))
-
-        return rgbToHex(r, g, b)
-    }
-     
-    function rgbToHex(r, g, b) {
-        function componentToHex(c) {
-            const hex = c.toString(16)
-            return hex.length === 1 ? "0" + hex : hex
+            countEl.innerText = this.countChange()
+    
+            localStorage.setItem('color', this.inputEl.value)
+            this.bodyEl.style.backgroundColor = localStorage.getItem('color')
         }
-        
-        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-    }
 
-    function onChangeStorage(event) {
-        addColor()
+        addColor() {
+            const color = localStorage.getItem('color')
+
+            console.log(color)
+    
+            if(!color) {
+                this.inputEl.value = this.GetBGColorBody()
+            } else {
+                this.bodyEl.style.backgroundColor = color
+                this.inputEl.value = color
+            }
+        }
+
+        countChange() {
+            this.count++
+
+            sessionStorage.setItem('count', this.count)
+
+            return this.count
+        }
+
+        onChangeStorage() {
+            this.addColor()
+        }
+
+        getBGColorBody() {
+            const style = window.getComputedStyle(this.bodyEl)
+            const bgColor = style.backgroundColor.replace(/rgb\(|\)/g, '')
+            const [r, g, b] = bgColor.split(',').map(num => parseInt(num.trim()))
+
+            return this.rgbToHex(r, g, b)
+        }
+
+        rgbToHex(r, g, b) {
+            function componentToHex(c) {
+                const hex = c.toString(16)
+                return hex.length === 1 ? "0" + hex : hex
+            }
+            
+            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
     }
     
     window.addEventListener('load', () => {
-        addColor()
         document.querySelector('form').addEventListener('submit', (e) => {e.preventDefault()})
-        document.querySelector('.form__btn').addEventListener('click', changeColor)
-        window.addEventListener('storage', onChangeStorage)
+        
+        const bgColor = new BGColor('body', '.form__input', '.form__btn')
     })
 } else {
     alert(`Нажаль ви відмовились від теста 😞`)

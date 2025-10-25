@@ -2,10 +2,6 @@ import { APIUtils } from "./APIUtils.js"
 import { DOMUtils } from "./DOMUtils.js"
 import { Dog } from "../components/Dog.js"
 
-// Це був мій код до того поки я не помітив проблему, коли я повертаюсь з сторінки 
-// dog-detail натискаючі кнопку назад браузера, в мене всі картки однакові у галереї, 
-// поясніть в чому помила, і як вирішити цю проблему? 
-
 // export class DogsManager {
 //     constructor(dogsData = []) {
 //         this.dogsData = dogsData
@@ -58,7 +54,6 @@ import { Dog } from "../components/Dog.js"
 //     }
 // }
 
-// так штучний інтелект допоміг віришити мою проблему
 const SESSION_KEY = 'dogsData'
 
 export class DogsManager {
